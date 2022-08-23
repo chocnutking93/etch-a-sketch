@@ -21,9 +21,10 @@ populateBoard(16);
 
 function changeSize(input){
     if (input >= 2 && input <= 100) {
+        document.querySelector('.error').style.display = 'none';
         populateBoard(input);
     } else {
-        console.log("error");
+        document.querySelector('.error').style.display = 'flex';
     }
 }
 
@@ -44,14 +45,17 @@ function changeColor(choice) {
 function resetBoard(){
     let board = document.querySelector(".board")
     let squares = board.querySelectorAll("div");
-    squares.forEach((div) => div.style.backgroundColor = 'white');
+    squares.forEach((div) => (div.style.backgroundColor = "white"));
 }
 
-document.querySelector('body').addEventListener('click', () => {
-    click = !click;
-    if(click) {
-        document.querySelector('.mode').textContent = "Mode: Coloring"
-    } else {
-        document.querySelector('.mode').textContent = "Mode: Not Coloring"
+document.querySelector("body").addEventListener("click", (e) => {
+    if(e.target.tagName != 'BUTTON'){
+      click = !click;
+       if(click) {
+           document.querySelector('.mode').textContent = "Mode: Coloring"
+        } else {
+           document.querySelector('.mode').textContent = "Mode: Not  Coloring"
     }
-})
+        
+    }
+});
